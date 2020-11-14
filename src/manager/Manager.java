@@ -17,5 +17,4 @@ public class Manager implements Runnable {
     public void run() {
 
     }
-
 }
