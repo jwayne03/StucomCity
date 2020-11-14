@@ -38,6 +38,10 @@ public class MyException extends Exception {
             "No more tenants fit",
             "This profession isn't admitted in the neighborhood",
             "This house is inhabited, can't be destroyed"
-
     );
+
+    @Override
+    public String getMessage() {
+        return messege.get(value);
+    }
 }
