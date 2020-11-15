@@ -2,10 +2,14 @@ package manager;
 
 import exceptions.MyException;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 
 public class Manager implements Runnable {
-    
+
     private static Manager manager;
 
     private Manager() {
@@ -34,6 +38,35 @@ public class Manager implements Runnable {
                     if (line.isEmpty()) break;
                     String[] data = line.split(" ");
 
+                    switch (data[0].toUpperCase()) {
+                        case "C":
+                            // build
+                            break;
+                        case "E":
+                            // destroy
+                            break;
+                        case "A":
+                            // rent
+                            break;
+                        case "D":
+                            // evict
+                            break;
+                        case "L":
+                            // houses neighborhood list
+                            break;
+                        case "V":
+                            // accomodation list
+                            break;
+                        case "S":
+                            // stucom city list
+                            break;
+                        case "X":
+                            // exit
+                            break;
+                        default:
+                            // throw exception
+                            break;
+                    }
                 }
                 fatalError();
             } catch (MyException | FileNotFoundException e) {
