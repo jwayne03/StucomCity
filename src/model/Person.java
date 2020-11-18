@@ -3,12 +3,12 @@ package model;
 public class Person {
 
     private String name;
-    private String profesion;
+    private String profession;
     private String type;
 
     public Person(String name, String profesion, String type) {
         this.name = name;
-        this.profesion = profesion;
+        this.profession = profesion;
         this.type = type;
     }
 
@@ -20,12 +20,12 @@ public class Person {
         this.name = name;
     }
 
-    public String getProfesion() {
-        return profesion;
+    public String getProfession() {
+        return profession;
     }
 
-    public void setProfesion(String profesion) {
-        this.profesion = profesion;
+    public void setProfession(String profession) {
+        this.profession = profession;
     }
 
     public String getType() {

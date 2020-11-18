@@ -27,7 +27,7 @@ public class MyException extends Exception {
 
     private List<String> messege = Arrays.asList(
             "Number of parameters are incorrect",
-            "FATAL ERROR",
+            "READ ERROR",
             "Wrong option",
             "Wrong neighborhood",
             "Wrong type of person",
