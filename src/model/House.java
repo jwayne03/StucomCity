@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class House {
 
+    private String option;
     private String neighborhood;
     private int rent;
     private int maxPerson;
@@ -17,20 +18,27 @@ public class House {
         houses = new ArrayList<>();
     }
 
-    public House(String neighborhood, int rent, int maxPerson, int houseId) {
+    public House(String option, String neighborhood, int rent, int maxPerson, int houseId) {
+        this.option = option;
         this.neighborhood = neighborhood;
         this.rent = rent;
         this.maxPerson = maxPerson;
         this.houseId = houseId;
     }
 
-    public void buildHouse(String neighborhood, int rent, int maxPerson, int houseId) {
-        House house = new House(neighborhood, rent, maxPerson, houseId);
+    public House(String neighborhood, int houseId) {
+        this.neighborhood = neighborhood;
+        this.houseId = houseId;
+    }
+
+    public void buildHouse(String option, String neighborhood, int rent, int maxPerson, int houseId) {
+        House house = new House(option, neighborhood, rent, maxPerson, houseId);
         houses.add(house);
     }
 
     public void destroyHouse(String neighborhood, int houseId) {
-
+        House house = new House(neighborhood, houseId);
+        houses.add(house);
     }
 
     public String getNeighborhood() {

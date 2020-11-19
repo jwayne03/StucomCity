@@ -1,21 +1,35 @@
 package manager;
 
 import exceptions.MyException;
+import exceptions.Exception;
 import model.House;
+import model.Neighborhood;
+import model.neighborhoods.Alameda;
+import model.neighborhoods.Barriobajo;
+import model.neighborhoods.Nolomires;
+import model.neighborhoods.Ofidelia;
+import model.neighborhoods.Villaconcha;
+import model.neighborhoods.Villaconchaalta;
+import model.neighborhoods.Vistaalegre;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Manager implements Runnable {
 
     private static Manager manager;
     private House house;
+    private List<Neighborhood> neighborhoods;
 
     private Manager() {
         house = new House();
+        neighborhoods = new ArrayList<>();
+        initArrayOfNeighborhood();
     }
 
     public static Manager getInstance() {
@@ -30,26 +44,25 @@ public class Manager implements Runnable {
 
     private void readFile() {
         try {
-            File file = new File("P0_ejemplo_entrada.txt");
+            File file = new File("P1_ejemplo_entrada.txt");
             BufferedReader read = new BufferedReader(new FileReader(file));
             String line;
 
             while ((line = read.readLine()) != null) {
                 if (line.isEmpty()) break;
                 String[] data = line.split(" ");
-
                 try {
                     switch (data[0].toUpperCase()) {
                         case "C":
-                            house.buildHouse(data[1].toUpperCase(), Integer.parseInt(data[2]),
-                                    Integer.parseInt(data[3]), Integer.parseInt(data[4]));
+                            build(data);
                             break;
                         case "E":
-                            house.destroyHouse(data[1].toUpperCase(), Integer.parseInt(data[2]));
+                            destroy(data);
                             break;
                         case "A":
                             // rent
                             break;
+
                         case "D":
                             // evict
                             break;
@@ -67,25 +80,43 @@ public class Manager implements Runnable {
                             System.exit(0);
                             break;
                         default:
-                            throw new MyException(MyException.NUMBER_PARAMETERS_INCORRECT);
+                            throw new Exception(Exception.NUMBER_PARAMETERS_INCORRECT);
                     }
-                } catch (MyException e) {
+                } catch (Exception e) {
                     System.out.println(e.getMessage());
                 }
             }
             fatalError();
-        } catch (MyException | FileNotFoundException e) {
+        } catch (Exception | FileNotFoundException e) {
             System.out.println(e.getMessage());
         } catch (IOException e) {
             e.getMessage();
         }
     }
 
-    private static void fatalError() throws MyException {
-        throw new MyException(MyException.READ_ERROR);
+    private void initArrayOfNeighborhood() {
+        neighborhoods.add(new Alameda("ALAMEDA"));
+        neighborhoods.add(new Barriobajo("BARRIOBAJO"));
+        neighborhoods.add(new Vistaalegre("VISTAALEGRE"));
+        neighborhoods.add(new Villaconcha("VILLACONCHA"));
+        neighborhoods.add(new Villaconchaalta("VILLACONCHAALTA"));
+        neighborhoods.add(new Nolomires("NOLOMIRES"));
+        neighborhoods.add(new Ofidelia("OFIDELIA"));
     }
 
-    private static void numberOfParametersIncorrect() throws MyException {
-        throw new MyException(MyException.NUMBER_PARAMETERS_INCORRECT);
+    private void build(String[] data) throws Exception, ArrayIndexOutOfBoundsException {
+
+    }
+
+    private void destroy(String[] data) {
+
+    }
+
+    private static void fatalError() throws Exception {
+        throw new Exception(Exception.READ_ERROR);
+    }
+
+    private static void numberOfParametersIncorrect() throws Exception {
+        throw new Exception(Exception.NUMBER_PARAMETERS_INCORRECT);
     }
 }

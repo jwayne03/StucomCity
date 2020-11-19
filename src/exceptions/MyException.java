@@ -5,9 +5,6 @@ import java.util.List;
 
 public class MyException extends Exception {
 
-    public static final int NUMBER_PARAMETERS_INCORRECT = 0;
-    public static final int READ_ERROR = 1;
-    public static final int WRONG_OPTION = 2;
     public static final int WRONG_NEIGHBORHOOD = 3;
     public static final int WRONG_TYPE_PERSON = 4;
     public static final int INCORRECT_NUMBER_OF_PERSON = 5;
@@ -22,13 +19,10 @@ public class MyException extends Exception {
     private int value;
 
     public MyException(int value) {
-        this.value = value;
+        super(value);
     }
 
     private List<String> messege = Arrays.asList(
-            "Number of parameters are incorrect",
-            "READ ERROR",
-            "Wrong option",
             "Wrong neighborhood",
             "Wrong type of person",
             "Incorrect number of person",
