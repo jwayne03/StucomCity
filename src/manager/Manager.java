@@ -26,6 +26,7 @@ public class Manager implements Runnable {
     private House house;
     private List<Neighborhood> neighborhoods;
 
+
     private Manager() {
         house = new House();
         neighborhoods = new ArrayList<>();
