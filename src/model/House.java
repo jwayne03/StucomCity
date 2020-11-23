@@ -31,16 +31,6 @@ public class House {
         this.houseId = houseId;
     }
 
-    public void buildHouse(String option, String neighborhood, int rent, int maxPerson, int houseId) {
-        House house = new House(option, neighborhood, rent, maxPerson, houseId);
-        houses.add(house);
-    }
-
-    public void destroyHouse(String neighborhood, int houseId) {
-        House house = new House(neighborhood, houseId);
-        houses.add(house);
-    }
-
     public String getNeighborhood() {
         return neighborhood;
     }
