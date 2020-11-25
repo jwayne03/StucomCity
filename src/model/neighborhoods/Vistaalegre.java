@@ -16,6 +16,11 @@ public class Vistaalegre extends Neighborhood {
         this.type = new ArrayList<>();
     }
 
+    @Override
+    public boolean checkHouseRent(int rent) {
+        return true;
+    }
+
     private void init() {
         type.add("CHILL");
         type.add("RICH");

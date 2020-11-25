@@ -14,6 +14,11 @@ public class Ofidelia extends Neighborhood {
         this.type = new ArrayList<>();
     }
 
+    @Override
+    public boolean checkHouseRent(int rent) {
+        return true;
+    }
+
     private void init() {
         type.add("POOR");
         type.add("CHILL");

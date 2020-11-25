@@ -18,6 +18,11 @@ public class Barriobajo extends Neighborhood {
         this.type = new ArrayList<>();
     }
 
+    @Override
+    public boolean checkHouseRent(int rent) {
+        return rent <= this.maxRent;
+    }
+
     private void init() {
         type.add("POOR");
     }

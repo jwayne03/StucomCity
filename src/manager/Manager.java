@@ -24,11 +24,13 @@ public class Manager implements Runnable {
 
     private static Manager manager;
     private House house;
+    private Neighborhood neighborhood;
     private List<Neighborhood> neighborhoods;
 
 
     private Manager() {
         house = new House();
+        neighborhood = new Neighborhood();
         neighborhoods = new ArrayList<>();
         initArrayOfNeighborhood();
     }
@@ -50,39 +52,16 @@ public class Manager implements Runnable {
             String line;
 
             while ((line = read.readLine()) != null) {
-                if (line.isEmpty()) break;
-                String[] data = line.split(" ");
                 try {
-                    switch (data[0].toUpperCase()) {
-                        case "C":
-                            build(data);
-                            break;
-                        case "E":
-                            destroy(data);
-                            break;
-                        case "A":
-                            // rent
-                            break;
+                    if (line.isEmpty()) break;
+                    String[] data = line.split(" ");
 
-                        case "D":
-                            // evict
-                            break;
-                        case "L":
-                            // houses neighborhood list
-                            break;
-                        case "V":
-                            // accomodation list
-                            break;
-                        case "S":
-                            // stucom city list
-                            break;
-                        case "X":
-                            System.out.println("EXIT HAHAAH");
-                            System.exit(0);
-                            break;
-                        default:
-                            throw new Exception(Exception.NUMBER_PARAMETERS_INCORRECT);
+                    for (String x : data) {
+                        System.out.print(x + " ");
                     }
+
+                    clasificator(data);
+                    System.out.println();
                 } catch (Exception e) {
                     System.out.println(e.getMessage());
                 }
@@ -92,6 +71,37 @@ public class Manager implements Runnable {
             System.out.println(e.getMessage());
         } catch (IOException e) {
             e.getMessage();
+        }
+    }
+
+    private void clasificator(String[] data) throws Exception {
+        switch (data[0].toUpperCase()) {
+            case "C":
+                neighborhood.build(data);
+                break;
+            case "E":
+                neighborhood.destroy(data);
+                break;
+            case "A":
+                rent(data);
+                break;
+            case "D":
+                evict(data);
+                break;
+            case "L":
+                listHousesNeighborhood(data);
+                break;
+            case "V":
+                accomodationList(data);
+                break;
+            case "S":
+                stucomCityList(data);
+                break;
+            case "X":
+                finish();
+                break;
+            default:
+                throw new Exception(Exception.WRONG_OPTION);
         }
     }
 
@@ -105,13 +115,34 @@ public class Manager implements Runnable {
         neighborhoods.add(new Ofidelia("OFIDELIA"));
     }
 
-    private void build(String[] data) throws Exception, ArrayIndexOutOfBoundsException {
+//    private void checkHouseId(int houseId) throws MyException {
+//        for (Neighborhood neighborhood : neighborhoods) {
+//            for (House arrayHouse : neighborhood.getHouses()) {
+//                if (arrayHouse.getHouseId() == houseId) throw new MyException(MyException.HOUSE_NOT_FOUND);
+//            }
+//        }
+//    }
 
+    private void rent(String[] data) throws Exception {
+        if (data.length != 6) throw new Exception(Exception.NUMBER_PARAMETERS_INCORRECT);
     }
 
-    private void destroy(String[] data) {
-
+    private void evict(String[] data) throws Exception {
+        if (data.length != 4) throw new Exception(Exception.NUMBER_PARAMETERS_INCORRECT);
     }
+
+    private void listHousesNeighborhood(String[] data) throws Exception {
+        if (data.length != 2) throw new Exception(Exception.NUMBER_PARAMETERS_INCORRECT);
+    }
+
+    private void accomodationList(String[] data) throws Exception {
+        if (data.length != 3) throw new Exception(Exception.NUMBER_PARAMETERS_INCORRECT);
+    }
+
+    private void stucomCityList(String[] data) throws Exception {
+        if (data.length != 1) throw new Exception(Exception.NUMBER_PARAMETERS_INCORRECT);
+    }
+
 
     private static void fatalError() throws Exception {
         throw new Exception(Exception.READ_ERROR);
@@ -120,4 +151,9 @@ public class Manager implements Runnable {
     private static void numberOfParametersIncorrect() throws Exception {
         throw new Exception(Exception.NUMBER_PARAMETERS_INCORRECT);
     }
+
+    private void finish() {
+    }
+
+
 }

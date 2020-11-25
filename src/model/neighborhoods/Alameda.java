@@ -17,6 +17,11 @@ public class Alameda extends Neighborhood {
         init();
     }
 
+    @Override
+    public boolean checkHouseRent(int rent) {
+        return rent > this.minRent;
+    }
+
     private void init() {
         type.add("RICH");
     }

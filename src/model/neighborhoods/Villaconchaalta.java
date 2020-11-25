@@ -16,6 +16,11 @@ public class Villaconchaalta extends Neighborhood {
         this.type = new ArrayList<>();
     }
 
+    @Override
+    public boolean checkHouseRent(int rent) {
+        return rent > this.minRent;
+    }
+
     private void init() {
         type.add("POOR");
         type.add("RICH");
