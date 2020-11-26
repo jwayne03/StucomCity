@@ -19,6 +19,11 @@ public class Ofidelia extends Neighborhood {
         return true;
     }
 
+    @Override
+    public boolean checkSize(int size) {
+        return true;
+    }
+
     private void init() {
         type.add("POOR");
         type.add("CHILL");

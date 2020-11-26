@@ -21,6 +21,11 @@ public class Villaconcha extends Neighborhood {
         return rent > this.minRent;
     }
 
+    @Override
+    public boolean checkSize(int size) {
+        return true;
+    }
+
     private void init() {
         type.add("RICH");
         type.add("CHILL");

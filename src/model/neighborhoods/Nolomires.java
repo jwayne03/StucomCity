@@ -21,6 +21,11 @@ public class Nolomires extends Neighborhood {
         return true;
     }
 
+    @Override
+    public boolean checkSize(int size) {
+        return size >= this.minLargeFamilies;
+    }
+
     private void init() {
         type.add("POOR");
     }

@@ -23,6 +23,11 @@ public class Barriobajo extends Neighborhood {
         return rent <= this.maxRent;
     }
 
+    @Override
+    public boolean checkSize(int size) {
+        return size >= this.minPeople;
+    }
+
     private void init() {
         type.add("POOR");
     }

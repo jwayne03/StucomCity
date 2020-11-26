@@ -1,65 +1,52 @@
 package model;
 
+import exceptions.Exception;
+import exceptions.MyException;
+import model.Person;
+
 import java.util.ArrayList;
+import java.util.List;
 
 public class House {
 
-    private String option;
-    private String neighborhood;
-    private int rent;
-    private int maxPerson;
-    private int houseId;
-
-    private ArrayList<House> houses;
-    private ArrayList<Person> person;
+    private int id;
+    private int capacity;
+    private int prize;
+    private List<Person> people;
 
     public House() {
-        person = new ArrayList<>();
-        houses = new ArrayList<>();
+
     }
 
-    public House(String option, String neighborhood, int rent, int maxPerson, int houseId) {
-        this.option = option;
-        this.neighborhood = neighborhood;
-        this.rent = rent;
-        this.maxPerson = maxPerson;
-        this.houseId = houseId;
+    public House(int id, int capacity, int prize) {
+        this.id = id;
+        this.capacity = capacity;
+        this.prize = prize;
+        people = new ArrayList<>();
     }
 
-    public House(String neighborhood, int houseId) {
-        this.neighborhood = neighborhood;
-        this.houseId = houseId;
+    public void rent(String[] data, Neighborhood neighborhood) throws Exception {
+        String tenantType = data[3].toUpperCase();
+        String tenantProfession = data[4].toUpperCase();
+        int tenantId = Integer.parseInt(data[5]);
+
+        if (checkSize()) throw new MyException(MyException.NO_MORE_TENANTS_FIT);
+        if (neighborhood.checkType(tenantType)) throw new MyException(MyException.WRONG_TYPE_PERSON);
     }
 
-    public String getNeighborhood() {
-        return neighborhood;
+    public List<Person> getPeople() {
+        return people;
     }
 
-    public void setNeighborhood(String neighborhood) {
-        this.neighborhood = neighborhood;
+    private boolean checkSize() {
+        return (this.capacity >= people.size());
     }
 
-    public int getRent() {
-        return rent;
+    public void setPeople(List<Person> people) {
+        this.people = people;
     }
 
-    public void setRent(int rent) {
-        this.rent = rent;
-    }
-
-    public int getMaxPerson() {
-        return maxPerson;
-    }
-
-    public void setMaxPerson(int maxPerson) {
-        this.maxPerson = maxPerson;
-    }
-
-    public int getHouseId() {
-        return houseId;
-    }
-
-    public void setHouseId(int houseId) {
-        this.houseId = houseId;
+    public int getId() {
+        return id;
     }
 }

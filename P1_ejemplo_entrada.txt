@@ -2,7 +2,7 @@ l
 L Barriobajo
 C Barriobajo 200 5 1
 C barrioBajo 500 2 2
-c Alameda 300 8 1
+c Alameda 3000 8 8
 c
 e Alameda 8
 c alaMeda 1300 2 1
