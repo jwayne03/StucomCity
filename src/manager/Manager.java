@@ -1,7 +1,7 @@
 package manager;
 
-import exceptions.MyException;
 import exceptions.Exception;
+import exceptions.MyException;
 import model.House;
 import model.Neighborhood;
 import model.neighborhoods.Alameda;
@@ -26,8 +26,7 @@ public class Manager implements Runnable {
     private House house;
     private Neighborhood neighborhood;
     private List<Neighborhood> neighborhoods;
-
-
+    
     private Manager() {
         house = new House();
         neighborhood = new Neighborhood();
@@ -60,7 +59,7 @@ public class Manager implements Runnable {
                         System.out.print(x + " ");
                     }
 
-                    clasificator(data);
+                    classification(data);
                     System.out.println();
                 } catch (Exception e) {
                     System.out.println(e.getMessage());
@@ -74,7 +73,7 @@ public class Manager implements Runnable {
         }
     }
 
-    private void clasificator(String[] data) throws Exception {
+    private void classification(String[] data) throws Exception {
         switch (data[0].toUpperCase()) {
             case "C":
                 if (data.length != 5) throw new Exception(Exception.NUMBER_PARAMETERS_INCORRECT);
@@ -94,7 +93,9 @@ public class Manager implements Runnable {
                 break;
             case "D":
                 if (data.length != 4) throw new Exception(Exception.NUMBER_PARAMETERS_INCORRECT);
-                evict(data);
+                neighborhood = checkNeighborhood(data[1]);
+                house = neighborhood.checkIdHouse(Integer.parseInt(data[2]));
+                house.evict(data, neighborhood);
                 break;
             case "L":
                 if (data.length != 2) throw new Exception(Exception.NUMBER_PARAMETERS_INCORRECT);
@@ -172,6 +173,4 @@ public class Manager implements Runnable {
 
     private void finish() {
     }
-
-
 }

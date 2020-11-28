@@ -34,6 +34,14 @@ public class House {
         if (neighborhood.checkType(tenantType)) throw new MyException(MyException.WRONG_TYPE_PERSON);
     }
 
+    public void evict(String[] data, Neighborhood neighborhood) {
+        String neighbordhood = data[1].toUpperCase();
+        int id = Integer.parseInt(data[2]);
+        int tenantId = Integer.parseInt(data[3]);
+
+
+    }
+
     public List<Person> getPeople() {
         return people;
     }

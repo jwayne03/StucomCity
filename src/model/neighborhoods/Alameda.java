@@ -4,6 +4,7 @@ import model.Neighborhood;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Alameda extends Neighborhood {
 
@@ -25,6 +26,11 @@ public class Alameda extends Neighborhood {
     @Override
     public boolean checkSize(int size) {
         return true;
+    }
+
+    @Override
+    public List<String> getType() {
+        return type;
     }
 
     private void init() {

@@ -48,6 +48,14 @@ public class Neighborhood {
         throw new MyException(MyException.HOUSE_NOT_FOUND);
     }
 
+    public List<String> getType() {
+        return type;
+    }
+
+    public void setType(List<String> type) {
+        this.type = type;
+    }
+
     public boolean checkSize(int size) {
         return false;
     }
@@ -78,4 +86,6 @@ public class Neighborhood {
     public void setName(String name) {
         this.name = name;
     }
+
+
 }
