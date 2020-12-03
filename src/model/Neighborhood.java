@@ -36,17 +36,28 @@ public class Neighborhood {
         House house = checkIdHouse(id);
         if (house.getPeople().size() > 0) throw new MyException(MyException.INHABITED_HOUSE_CANT_BE_DESTROYED);
         this.getHouses().remove(house);
-        System.out.println("House has been destroyed");
+        System.out.print("House has been destroyed");
     }
 
     public House checkIdHouse(int id) throws MyException {
-        for (House house : this.getHouses()) {
-            if (house.getId() == id) {
-                return house;
-            }
-        }
+        for (House house : this.getHouses()) if (house.getId() == id) return house;
         throw new MyException(MyException.HOUSE_NOT_FOUND);
     }
+
+    public void listHousesNeighborhood(String[] data) throws Exception {
+        System.out.println("\nOK: List houses of neighborhood");
+
+        for (House house : houses) {
+            if (house.getPeople().size() == 0) {
+                System.out.println("<House with ID: " + house.getId() + " has " + house.getPeople().size() + " renters>");
+            } else {
+                System.out.println("<House with ID: " + house.getId() + " has " + house.getPeople().size() + " renters>");
+            }
+        }
+        System.out.println("<No more houses in the neighborhood>");
+    }
+
+
 
     public List<String> getType() {
         return type;
@@ -64,12 +75,6 @@ public class Neighborhood {
         return false;
     }
 
-    public boolean checkType(String type) {
-        for (String i: this.type) {
-            if (type.equalsIgnoreCase(i)) return true;
-        }
-        return false;
-    }
 
     public List<House> getHouses() {
         return houses;

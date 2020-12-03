@@ -18,6 +18,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Manager implements Runnable {
@@ -26,7 +27,7 @@ public class Manager implements Runnable {
     private House house;
     private Neighborhood neighborhood;
     private List<Neighborhood> neighborhoods;
-    
+
     private Manager() {
         house = new House();
         neighborhood = new Neighborhood();
@@ -55,9 +56,7 @@ public class Manager implements Runnable {
                     if (line.isEmpty()) break;
                     String[] data = line.split(" ");
 
-                    for (String x : data) {
-                        System.out.print(x + " ");
-                    }
+                    Arrays.stream(data).forEach(i -> System.out.print(i + " "));
 
                     classification(data);
                     System.out.println();
@@ -95,15 +94,17 @@ public class Manager implements Runnable {
                 if (data.length != 4) throw new Exception(Exception.NUMBER_PARAMETERS_INCORRECT);
                 neighborhood = checkNeighborhood(data[1]);
                 house = neighborhood.checkIdHouse(Integer.parseInt(data[2]));
-                house.evict(data, neighborhood);
+                if (!house.evict(Integer.parseInt(data[3])))
+                    throw new MyException(MyException.PERSON_NOT_FOUND);
                 break;
             case "L":
                 if (data.length != 2) throw new Exception(Exception.NUMBER_PARAMETERS_INCORRECT);
-                listHousesNeighborhood(data);
+                neighborhood = checkNeighborhood(data[1]);
+                neighborhood.listHousesNeighborhood(data);
                 break;
             case "V":
                 if (data.length != 3) throw new Exception(Exception.NUMBER_PARAMETERS_INCORRECT);
-                accomodationList(data);
+                house.accomodationList();
                 break;
             case "S":
                 if (data.length != 1) throw new Exception(Exception.NUMBER_PARAMETERS_INCORRECT);
@@ -122,7 +123,7 @@ public class Manager implements Runnable {
             if (neighborhood.getName().equalsIgnoreCase(data)) {
                 for (House house : neighborhood.getHouses()) {
                     if (house.getId() == id) {
-                        System.out.println("House found");
+                        System.out.print("House found");
                         return house;
                     }
                 }
@@ -137,6 +138,8 @@ public class Manager implements Runnable {
                 return neighborhood;
             }
         }
+
+
         throw new MyException(MyException.WRONG_NEIGHBORHOOD);
     }
 
@@ -150,14 +153,6 @@ public class Manager implements Runnable {
         neighborhoods.add(new Ofidelia("OFIDELIA"));
     }
 
-    private void evict(String[] data) throws Exception {
-    }
-
-    private void listHousesNeighborhood(String[] data) throws Exception {
-    }
-
-    private void accomodationList(String[] data) throws Exception {
-    }
 
     private void stucomCityList(String[] data) throws Exception {
     }

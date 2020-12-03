@@ -2,7 +2,6 @@ package model;
 
 import exceptions.Exception;
 import exceptions.MyException;
-import model.Person;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +12,7 @@ public class House {
     private int capacity;
     private int prize;
     private List<Person> people;
+    private Person person;
 
     public House() {
 
@@ -31,15 +31,31 @@ public class House {
         int tenantId = Integer.parseInt(data[5]);
 
         if (checkSize()) throw new MyException(MyException.NO_MORE_TENANTS_FIT);
-        if (neighborhood.checkType(tenantType)) throw new MyException(MyException.WRONG_TYPE_PERSON);
+        if (!person.checkType(neighborhood)) throw new MyException(MyException.WRONG_TYPE_PERSON);
+        person.checkProfession(neighborhood);
+
+        person = new Person(tenantId, tenantProfession, tenantType);
+        person.checkProfession(neighborhood);
     }
 
-    public void evict(String[] data, Neighborhood neighborhood) {
-        String neighbordhood = data[1].toUpperCase();
-        int id = Integer.parseInt(data[2]);
-        int tenantId = Integer.parseInt(data[3]);
+    public boolean evict(int id) {
+        for (Person person : people) {
+            if (person.getId() == id) people.remove(person);
+            System.out.println("Tenant evicted");
+            return true;
+        }
+        return false;
+    }
 
+    public void accomodationList() {
+        System.out.println("\nOK: List houses of renters");
 
+        for (Person person : people) {
+            System.out.println("<Renter with ID: " + person.getId() + " is " + person.getType() + " and "
+                    + person.getProfession() + ">");
+
+        }
+        System.out.println("<No more renters in the house>");
     }
 
     public List<Person> getPeople() {
@@ -57,4 +73,5 @@ public class House {
     public int getId() {
         return id;
     }
+
 }
