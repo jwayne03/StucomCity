@@ -3,7 +3,7 @@ package exceptions;
 import java.util.Arrays;
 import java.util.List;
 
-public class Exception extends java.lang.Exception {
+public class Exceptions extends java.lang.Exception {
 
     public static final int NUMBER_PARAMETERS_INCORRECT = 0;
     public static final int READ_ERROR = 1;
@@ -17,7 +17,7 @@ public class Exception extends java.lang.Exception {
 
     private int value;
 
-    public Exception(int value) {
+    public Exceptions(int value) {
         this.value = value;
     }
 

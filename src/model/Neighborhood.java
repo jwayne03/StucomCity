@@ -1,6 +1,6 @@
 package model;
 
-import exceptions.Exception;
+import exceptions.Exceptions;
 import exceptions.MyException;
 
 import java.util.ArrayList;
@@ -18,10 +18,10 @@ public class Neighborhood {
     public Neighborhood(String name) {
         this.name = name;
         houses = new ArrayList<>();
-        type = null;
+        type = new ArrayList<>();
     }
 
-    public void build(String[] data) throws Exception {
+    public void build(String[] data) throws Exceptions, MyException {
         int rent = Integer.parseInt(data[2]);
         int houseSize = Integer.parseInt(data[3]);
         int houseId = Integer.parseInt(data[4]);
@@ -40,24 +40,27 @@ public class Neighborhood {
     }
 
     public House checkIdHouse(int id) throws MyException {
-        for (House house : this.getHouses()) if (house.getId() == id) return house;
+        for (House house : this.getHouses()) {
+            if (house.getId() == id) {
+                return house;
+            }
+        }
         throw new MyException(MyException.HOUSE_NOT_FOUND);
     }
 
-    public void listHousesNeighborhood(String[] data) throws Exception {
-        System.out.println("\nOK: List houses of neighborhood");
+    public void listHousesNeighborhood(String data) throws Exceptions {
+        System.out.println("OK: List houses of neighborhood");
 
-        for (House house : houses) {
+        houses.stream().forEach(house -> {
             if (house.getPeople().size() == 0) {
                 System.out.println("<House with ID: " + house.getId() + " has " + house.getPeople().size() + " renters>");
             } else {
                 System.out.println("<House with ID: " + house.getId() + " has " + house.getPeople().size() + " renters>");
+                if (data.equalsIgnoreCase("s")) house.accomodationList();
             }
-        }
-        System.out.println("<No more houses in the neighborhood>");
+            System.out.println("<No more houses in the neighborhood>");
+        });
     }
-
-
 
     public List<String> getType() {
         return type;

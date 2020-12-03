@@ -14,6 +14,7 @@ public class Nolomires extends Neighborhood {
         super(name);
         this.minLargeFamilies = 5;
         this.type = new ArrayList<>();
+        type.add("POBRE");
     }
 
     @Override
@@ -24,9 +25,5 @@ public class Nolomires extends Neighborhood {
     @Override
     public boolean checkSize(int size) {
         return size >= this.minLargeFamilies;
-    }
-
-    private void init() {
-        type.add("POOR");
     }
 }

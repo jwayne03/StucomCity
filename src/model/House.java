@@ -1,6 +1,6 @@
 package model;
 
-import exceptions.Exception;
+import exceptions.Exceptions;
 import exceptions.MyException;
 
 import java.util.ArrayList;
@@ -25,20 +25,21 @@ public class House {
         people = new ArrayList<>();
     }
 
-    public void rent(String[] data, Neighborhood neighborhood) throws Exception {
+    public void rent(String[] data, Neighborhood neighborhood) throws Exceptions, MyException {
         String tenantType = data[3].toUpperCase();
         String tenantProfession = data[4].toUpperCase();
         int tenantId = Integer.parseInt(data[5]);
 
-        if (checkSize()) throw new MyException(MyException.NO_MORE_TENANTS_FIT);
-        if (!person.checkType(neighborhood)) throw new MyException(MyException.WRONG_TYPE_PERSON);
+        person = new Person(tenantId, tenantProfession, tenantType);
+
+        if (!isThisSize()) throw new MyException(MyException.NO_MORE_TENANTS_FIT);
+        if (!person.isType(neighborhood)) throw new MyException(MyException.WRONG_TYPE_PERSON);
         person.checkProfession(neighborhood);
 
-        person = new Person(tenantId, tenantProfession, tenantType);
-        person.checkProfession(neighborhood);
+//        person.checkProfession(neighborhood);
     }
 
-    public boolean evict(int id) {
+    public boolean isEvicted(int id) {
         for (Person person : people) {
             if (person.getId() == id) people.remove(person);
             System.out.println("Tenant evicted");
@@ -62,7 +63,7 @@ public class House {
         return people;
     }
 
-    private boolean checkSize() {
+    private boolean isThisSize() {
         return (this.capacity >= people.size());
     }
 

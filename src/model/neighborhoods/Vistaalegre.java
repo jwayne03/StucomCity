@@ -14,6 +14,9 @@ public class Vistaalegre extends Neighborhood {
         super(name);
         this.couple = 2;
         this.type = new ArrayList<>();
+        type.add("TRANQUILO");
+        type.add("RICO");
+        type.add("POBRE");
     }
 
     @Override
@@ -26,9 +29,4 @@ public class Vistaalegre extends Neighborhood {
         return size == this.couple;
     }
 
-    private void init() {
-        type.add("CHILL");
-        type.add("RICH");
-        type.add("POOR");
-    }
 }

@@ -19,7 +19,7 @@ public class MyException extends Exception {
     private int value;
 
     public MyException(int value) {
-        super(value);
+        this.value = value;
     }
 
     private List<String> messege = Arrays.asList(

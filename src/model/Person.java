@@ -11,14 +11,14 @@ public class Person {
     private String profession;
     private String type;
 
-    public Person(int id, String profesion, String type) {
+    public Person(int id, String profession, String type) {
         this.id = id;
-        this.profession = profesion;
+        this.profession = profession;
         this.type = type;
     }
 
     public void checkProfession(Neighborhood neighborhood) throws MyException {
-        if (!professions()) throw new MyException(MyException.PROFESSION_NOT_ADMITTED_NEIGHBORHOOD);
+        if (!isProfession()) throw new MyException(MyException.PROFESSION_NOT_ADMITTED_NEIGHBORHOOD);
         if (neighborhood.getName().equalsIgnoreCase("ofidelia")) {
             switch (this.type.toUpperCase()) {
                 case "RICO":
@@ -44,24 +44,30 @@ public class Person {
         }
     }
 
-    private boolean professions() {
+    private boolean isProfession() {
         List<String> stringList = new ArrayList<>();
         stringList.add("CONTABLE");
         stringList.add("EMPRESARIO");
         stringList.add("DIRECTIVO");
         stringList.add("PESCADOR");
 
-        for (String x : stringList) if (this.profession.equalsIgnoreCase(x)) return true;
+        for (String x : stringList) {
+            if (this.profession.equalsIgnoreCase(x)) return true;
+        }
         return false;
     }
 
-    public boolean checkType(Neighborhood neighborhoodType) throws MyException {
-        if (!isTypeTrue(this.type)) throw new MyException(MyException.WRONG_TYPE_PERSON);
-        for (String i : neighborhoodType.getType()) if (type.equalsIgnoreCase(i)) return true;
+    public boolean isType(Neighborhood neighborhoodType) throws MyException {
+        if (!ifTypeTrue(this.type)) throw new MyException(MyException.WRONG_TYPE_PERSON);
+        for (String i : neighborhoodType.getType()) {
+            if (type.equalsIgnoreCase(i)) {
+                return true;
+            }
+        }
         return false;
     }
 
-    public boolean isTypeTrue(String tenantType) {
+    public boolean ifTypeTrue(String tenantType) {
         return tenantType.equalsIgnoreCase("RICO")
                 || tenantType.equalsIgnoreCase("POBRE")
                 || tenantType.equalsIgnoreCase("TRANQUILO");

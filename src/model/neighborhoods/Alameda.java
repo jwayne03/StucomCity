@@ -4,7 +4,6 @@ import model.Neighborhood;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class Alameda extends Neighborhood {
 
@@ -15,7 +14,7 @@ public class Alameda extends Neighborhood {
         super(name);
         this.minRent = 1000;
         this.type = new ArrayList<>();
-        init();
+        type.add("RICO");
     }
 
     @Override
@@ -33,7 +32,4 @@ public class Alameda extends Neighborhood {
         return type;
     }
 
-    private void init() {
-        type.add("RICH");
-    }
 }

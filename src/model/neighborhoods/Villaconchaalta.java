@@ -14,6 +14,9 @@ public class Villaconchaalta extends Neighborhood {
         super(name);
         this.minRent = 500;
         this.type = new ArrayList<>();
+        type.add("POBRE");
+        type.add("RICO");
+        type.add("POBRE");
     }
 
     @Override
@@ -24,11 +27,5 @@ public class Villaconchaalta extends Neighborhood {
     @Override
     public boolean checkSize(int size) {
         return true;
-    }
-
-    private void init() {
-        type.add("POOR");
-        type.add("RICH");
-        type.add("POOR");
     }
 }

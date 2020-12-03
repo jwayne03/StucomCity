@@ -14,6 +14,8 @@ public class Villaconcha extends Neighborhood {
         super(name);
         this.minRent = 500;
         this.type = new ArrayList<>();
+        type.add("RICO");
+        type.add("TRANQUILO");
     }
 
     @Override
@@ -26,8 +28,4 @@ public class Villaconcha extends Neighborhood {
         return true;
     }
 
-    private void init() {
-        type.add("RICH");
-        type.add("CHILL");
-    }
 }

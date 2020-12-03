@@ -12,6 +12,8 @@ public class Ofidelia extends Neighborhood {
     public Ofidelia(String name) {
         super(name);
         this.type = new ArrayList<>();
+        type.add("POBRE");
+        type.add("TRANQUILO");
     }
 
     @Override
@@ -22,10 +24,5 @@ public class Ofidelia extends Neighborhood {
     @Override
     public boolean checkSize(int size) {
         return true;
-    }
-
-    private void init() {
-        type.add("POOR");
-        type.add("CHILL");
     }
 }
