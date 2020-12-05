@@ -2,6 +2,7 @@ package model;
 
 import exceptions.Exceptions;
 import exceptions.MyException;
+import persistence.FileManagement;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +14,7 @@ public class Neighborhood {
     protected List<String> type;
 
     public Neighborhood() {
+
     }
 
     public Neighborhood(String name) {
@@ -21,7 +23,7 @@ public class Neighborhood {
         type = new ArrayList<>();
     }
 
-    public void build(String[] data) throws Exceptions, MyException {
+    public void build(String[] data) throws MyException {
         int rent = Integer.parseInt(data[2]);
         int houseSize = Integer.parseInt(data[3]);
         int houseId = Integer.parseInt(data[4]);
@@ -32,11 +34,11 @@ public class Neighborhood {
         this.houses.add(new House(houseId, houseSize, rent));
     }
 
-    public void destroy(int id) throws MyException {
+    public void destroy(int id, FileManagement fileManagement) throws MyException {
         House house = checkIdHouse(id);
         if (house.getPeople().size() > 0) throw new MyException(MyException.INHABITED_HOUSE_CANT_BE_DESTROYED);
         this.getHouses().remove(house);
-        System.out.print("House has been destroyed");
+        fileManagement.saveData("< OK: Destroyed house in the neighborhood >");
     }
 
     public House checkIdHouse(int id) throws MyException {
@@ -48,18 +50,23 @@ public class Neighborhood {
         throw new MyException(MyException.HOUSE_NOT_FOUND);
     }
 
-    public void listHousesNeighborhood(String data) throws Exceptions {
-        System.out.println("OK: List houses of neighborhood");
+    public void listHousesNeighborhood(String data, FileManagement fileManagement) {
+        fileManagement.saveData("< OK: Listing houses in the neighborhood >");
 
         houses.stream().forEach(house -> {
+
             if (house.getPeople().size() == 0) {
-                System.out.println("<House with ID: " + house.getId() + " has " + house.getPeople().size() + " renters>");
+                fileManagement.saveData("<House with id: " + house.getId()
+                        + " has " + house.getPeople().size() + " tenants >");
             } else {
-                System.out.println("<House with ID: " + house.getId() + " has " + house.getPeople().size() + " renters>");
-                if (data.equalsIgnoreCase("s")) house.accomodationList();
+                fileManagement.saveData("<House with id: " + house.getId()
+                        + " has " + house.getPeople().size() + " tenants>");
+                if (data.equalsIgnoreCase("s")) house.accomodationList(fileManagement);
             }
-            System.out.println("<No more houses in the neighborhood>");
+            fileManagement.saveData("< There are no more houses in the neighborhood >");
         });
+
+        fileManagement.saveData("< End of the neighborhood list >");
     }
 
     public List<String> getType() {
@@ -78,7 +85,6 @@ public class Neighborhood {
         return false;
     }
 
-
     public List<House> getHouses() {
         return houses;
     }
@@ -94,6 +100,4 @@ public class Neighborhood {
     public void setName(String name) {
         this.name = name;
     }
-
-
 }

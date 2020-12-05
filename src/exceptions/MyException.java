@@ -23,15 +23,15 @@ public class MyException extends Exception {
     }
 
     private List<String> messege = Arrays.asList(
-            "Wrong neighborhood",
-            "Wrong type of person",
-            "Incorrect number of person",
-            "Incorrect rent price",
-            "House not found",
-            "This person isn't admitted in the neighborhood",
-            "No more tenants fit",
-            "This profession isn't admitted in the neighborhood",
-            "This house is inhabited, can't be destroyed"
+            "< Wrong Neighborhood Name >",
+            "< Incorrect Tenant Profession >",
+            "< Incorrect number of tenants >",
+            "< Incorrect rental price >",
+            "< House not found >",
+            "< Tenant not admitted in the neighborhood >",
+            "< There are no more houses in the neighborhood >",
+            "< This profession isn't admitted in the neighborhood >",
+            "< This house is inhabited, can't be destroyed >"
     );
 
     @Override

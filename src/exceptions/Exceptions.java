@@ -10,9 +10,9 @@ public class Exceptions extends java.lang.Exception {
     public static final int WRONG_OPTION = 2;
 
     private List<String> messege = Arrays.asList(
-            "Number of parameters are incorrect",
-            "READ ERROR",
-            "Wrong option"
+            "< Incorrect number of parameters >",
+            "< READ ERROR >",
+            "< Wrong Option >"
     );
 
     private int value;

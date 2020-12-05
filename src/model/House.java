@@ -1,7 +1,7 @@
 package model;
 
-import exceptions.Exceptions;
 import exceptions.MyException;
+import persistence.FileManagement;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +25,7 @@ public class House {
         people = new ArrayList<>();
     }
 
-    public void rent(String[] data, Neighborhood neighborhood) throws Exceptions, MyException {
+    public void rent(String[] data, Neighborhood neighborhood) throws MyException {
         String tenantType = data[3].toUpperCase();
         String tenantProfession = data[4].toUpperCase();
         int tenantId = Integer.parseInt(data[5]);
@@ -35,28 +35,25 @@ public class House {
         if (!isThisSize()) throw new MyException(MyException.NO_MORE_TENANTS_FIT);
         if (!person.isType(neighborhood)) throw new MyException(MyException.WRONG_TYPE_PERSON);
         person.checkProfession(neighborhood);
-
-//        person.checkProfession(neighborhood);
     }
 
-    public boolean isEvicted(int id) {
+    public boolean isEvicted(int id, FileManagement fileManagement) {
         for (Person person : people) {
             if (person.getId() == id) people.remove(person);
-            System.out.println("Tenant evicted");
+            fileManagement.saveData("< OK: Evicted tenant of the house >");
             return true;
         }
         return false;
     }
 
-    public void accomodationList() {
-        System.out.println("\nOK: List houses of renters");
+    public void accomodationList(FileManagement fileManagement) {
+        fileManagement.saveData("\n< OK: Listing tenants of the House >");
 
         for (Person person : people) {
-            System.out.println("<Renter with ID: " + person.getId() + " is " + person.getType() + " and "
+            fileManagement.saveData("<Tenant with id: " + person.getId() + " is " + person.getType() + " and "
                     + person.getProfession() + ">");
-
         }
-        System.out.println("<No more renters in the house>");
+        fileManagement.saveData("< There are no more tenants in the house >");
     }
 
     public List<Person> getPeople() {
