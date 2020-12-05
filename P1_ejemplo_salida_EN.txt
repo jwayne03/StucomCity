@@ -1,0 +1,90 @@
+Language changed to EN
+< Incorrect number of parameters >
+< OK: Listing houses in the neighborhood >
+< There are no more houses in the neighborhood >
+< OK: House created in the neighborhood >
+< Incorrect rental price >
+< Incorrect rental price >
+< Incorrect number of parameters >
+< House not found >
+< OK: House created in the neighborhood >
+< Wrong Neighborhood Name >
+< Tenant not admitted in the neighborhood >
+< OK: Rented the house to a new tenant >
+< OK: Rented the house to a new tenant >
+< OK: Listing Neighborhoods >
+< NeighborhoodALAMEDA >
+	< House with id: 1has 0tenants >
+< NeighborhoodBARRIOBAJO >
+	< House with id: 1has 2tenants >
+		< Tenant with id: 1is pobreand pescador >
+		< Tenant with id: 2is pobreand pescador >
+< NeighborhoodVISTAALEGRE >
+	< There are not houses >
+< NeighborhoodVILLACONCHA >
+	< There are not houses >
+< NeighborhoodVILLACONCHAALTA >
+	< There are not houses >
+< NeighborhoodNOLOMIRES >
+	< There are not houses >
+< NeighborhoodOFIDELIA >
+	< There are not houses >
+< End of the neighborhood list >
+< OK: Listing tenants of the House >
+< Tenant with id: 1is pobreand pescador >
+< Tenant with id: 2is pobreand pescador >
+< There are no more tenants in the house >
+< OK: Evicted tenant of the house >
+< OK: House created in the neighborhood >
+< Incorrect number of parameters >
+< OK: House created in the neighborhood >
+< OK: Listing houses in the neighborhood >
+< House with id: 1has 1tenants >
+< House with id: 2has 0tenants >
+< There are no more houses in the neighborhood >
+< Inhabited house, cannot be destroyed >
+< OK: Evicted tenant of the house >
+< Incorrect number of parameters >
+< OK: House created in the neighborhood >
+< OK: Rented the house to a new tenant >
+< OK: Rented the house to a new tenant >
+< OK: Rented the house to a new tenant >
+< OK: Rented the house to a new tenant >
+< Incorrect rental price >
+< Incorrect number of parameters >
+< OK: House created in the neighborhood >
+< Wrong Neighborhood Name >
+< Incorrect number of tenants >
+< Incorrect number of tenants >
+< Wrong option >
+< Tenant not admitted in the neighborhood >
+< House not found >
+< Tenant not admitted in the neighborhood >
+< OK: House created in the neighborhood >
+< Tenant not found >
+< Incorrect Tenant Profession >
+< Incorrect Tenant Profession >
+< OK: Rented the house to a new tenant >
+< Tenant not found >
+< OK: House created in the neighborhood >
+< OK: Rented the house to a new tenant >
+< Inhabited house, cannot be destroyed >
+< Incorrect number of parameters >
+< OK: Evicted tenant of the house >
+< Wrong option >
+< Incorrect number of parameters >
+< OK: Rented the house to a new tenant >
+< Wrong Neighborhood Name >
+< Incorrect Tenant Profession >
+< House not found >
+< OK: House created in the neighborhood >
+< Incorrect Tenant Profession >
+< Incorrect Tenant Profession >
+< OK: Destroyed house in the neighborhood >
+< House not found >
+< OK: Rented the house to a new tenant >
+< Incorrect number of tenants >
+< Wrong Neighborhood Name >
+< OK: House created in the neighborhood >
+< Incorrect Tenant Profession >
+< End of Program >

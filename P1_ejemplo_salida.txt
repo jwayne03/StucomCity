@@ -1,0 +1,138 @@
+s< N�mero de par�metros incorrecto >
+< OK: Listando casas del Barrio >
+< No hay m�s casas en el barrio >
+< OK: Casa creada en el Barrio >
+< Precio de alquiler incorrecto >
+< Precio de alquiler incorrecto >
+< N�mero de par�metros incorrecto >
+< Casa no encontrado >
+< OK: Casa creada en el Barrio >
+< Nombre de Barrio incorrecto >
+< Tipo de Inquilino incorrecto >
+< OK: Alquilada la casa a un nuevo inquilino >
+< OK: Alquilada la casa a un nuevo inquilino >
+< OK: Listando Barrios >
+< Barrio ALAMEDA >
+	< Casa con id: 1 tiene 0 inquilinos >
+< Barrio BARRIOBAJO >
+	< Casa con id: 1 tiene 2 inquilinos >
+		< Inquilino con id: 1 es pobre y pescador >
+		< Inquilino con id: 2 es pobre y pescador >
+< Barrio VISTAALEGRE >
+	< No hay casas >
+< Barrio VILLACONCHA >
+	< No hay casas >
+< Barrio VILLACONCHAALTA >
+	< No hay casas >
+< Barrio NOLOMIRES >
+	< No hay casas >
+< Barrio OFIDELIA >
+	< No hay casas >
+< Fin listado de barrios >
+< OK: Listando inquilinos de la Casa >
+< Inquilino con id: 1 es pobre y pescador >
+< Inquilino con id: 2 es pobre y pescador >
+< No hay m�s inquilinos en la casa >
+< OK: Desauciado inquilino de la casa >
+< OK: Casa creada en el Barrio >
+< N�mero de par�metros incorrecto >
+< OK: Casa creada en el Barrio >
+< OK: Listando casas del Barrio >
+< Casa con id: 1 tiene 1 inquilinos >< Casa con id: 2 tiene 0 inquilinos >
+< No hay m�s casas en el barrio >
+< Casa habitada, no se puede destruir >
+< OK: Desauciado inquilino de la casa >
+< N�mero de par�metros incorrecto >
+< OK: Casa creada en el Barrio >
+< OK: Alquilada la casa a un nuevo inquilino >
+< OK: Alquilada la casa a un nuevo inquilino >
+< OK: Alquilada la casa a un nuevo inquilino >
+< OK: Alquilada la casa a un nuevo inquilino >
+< Precio de alquiler incorrecto >
+< N�mero de par�metros incorrecto >
+< OK: Casa creada en el Barrio >
+< Nombre de Barrio incorrecto >
+< N�mero de inquilinos incorrecto >
+< N�mero de inquilinos incorrecto >
+< Opci�n incorrecta >
+< Tipo de Inquilino incorrecto >
+< Casa no encontrado >
+< Tipo de Inquilino incorrecto >
+< OK: Casa creada en el Barrio >
+< Inquilino no encontrado >
+< Profesi�n no admitida en el Barrio >
+< Profesi�n no admitida en el Barrio >
+< OK: Alquilada la casa a un nuevo inquilino >
+< Inquilino no encontrado >
+< OK: Casa creada en el Barrio >
+< OK: Alquilada la casa a un nuevo inquilino >
+< Casa habitada, no se puede destruir >
+< N�mero de par�metros incorrecto >
+< OK: Desauciado inquilino de la casa >
+< Opci�n incorrecta >
+< N�mero de par�metros incorrecto >
+< OK: Alquilada la casa a un nuevo inquilino >
+< Nombre de Barrio incorrecto >
+< Profesi�n no admitida en el Barrio >
+< Casa no encontrado >
+< OK: Casa creada en el Barrio >
+< Profesi�n no admitida en el Barrio >
+< Profesi�n no admitida en el Barrio >
+< OK: Casa destruida en el Barrio >
+< Casa no encontrado >
+< OK: Alquilada la casa a un nuevo inquilino >
+< N�mero de inquilinos incorrecto >
+< Nombre de Barrio incorrecto >
+< OK: Casa creada en el Barrio >
+< Profesi�n no admitida en el Barrio >
+< OK: Casa creada en el Barrio >
+< Tipo de Inquilino incorrecto >
+< No caben m�s inquilinos >
+< Profesi�n no admitida en el Barrio >
+< OK: Alquilada la casa a un nuevo inquilino >
+< OK: Alquilada la casa a un nuevo inquilino >
+< No caben m�s inquilinos >
+< Casa no encontrado >
+< Nombre de Barrio incorrecto >
+< Profesi�n no admitida en el Barrio >
+< Tipo de Inquilino incorrecto >
+< OK: Alquilada la casa a un nuevo inquilino >
+< Casa habitada, no se puede destruir >
+< Casa habitada, no se puede destruir >
+< Casa habitada, no se puede destruir >
+< OK: Desauciado inquilino de la casa >
+< OK: Alquilada la casa a un nuevo inquilino >
+< OK: Casa destruida en el Barrio >
+< OK: Listando casas del Barrio >
+< Casa con id: 2 tiene 0 inquilinos >
+< No hay m�s casas en el barrio >
+< Inquilino no encontrado >
+< OK: Casa destruida en el Barrio >
+< OK: Listando Barrios >
+< Barrio ALAMEDA >
+	< Casa con id: 1 tiene 2 inquilinos >
+		< Inquilino con id: 1 es RiCo y directivo >
+		< Inquilino con id: 2 es RiCo y contable >
+	< Casa con id: 2 tiene 1 inquilinos >
+		< Inquilino con id: 4 es RiCo y contable >
+< Barrio BARRIOBAJO >
+	< Casa con id: 2 tiene 0 inquilinos >
+< Barrio VISTAALEGRE >
+	< Casa con id: 3 tiene 2 inquilinos >
+		< Inquilino con id: 2 es Pobre y pescador >
+		< Inquilino con id: 3 es Tranquilo y pescador >
+	< Casa con id: 4 tiene 1 inquilinos >
+		< Inquilino con id: 3 es Pobre y pescador >
+< Barrio VILLACONCHA >
+	< Casa con id: 2 tiene 1 inquilinos >
+		< Inquilino con id: 3 es Tranquilo y pescador >
+< Barrio VILLACONCHAALTA >
+	< No hay casas >
+< Barrio NOLOMIRES >
+	< Casa con id: 1 tiene 1 inquilinos >
+		< Inquilino con id: 3 es pobre y pescador >
+< Barrio OFIDELIA >
+	< Casa con id: 1 tiene 2 inquilinos >
+		< Inquilino con id: 1 es Pobre y pescador >
+		< Inquilino con id: 2 es Pobre y contable >
+< Fin listado de barrios >
