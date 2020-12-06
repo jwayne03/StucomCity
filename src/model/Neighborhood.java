@@ -23,7 +23,7 @@ public class Neighborhood {
         type = new ArrayList<>();
     }
 
-    public void build(String[] data) throws MyException {
+    public void build(String[] data, FileManagement fileManagement) throws MyException {
         int rent = Integer.parseInt(data[2]);
         int houseSize = Integer.parseInt(data[3]);
         int houseId = Integer.parseInt(data[4]);
@@ -32,6 +32,8 @@ public class Neighborhood {
         if (!checkSize(houseSize)) throw new MyException(MyException.INCORRECT_NUMBER_OF_PERSON);
 
         this.houses.add(new House(houseId, houseSize, rent));
+
+        fileManagement.saveData("< OK: House created in the neighborhood >");
     }
 
     public void destroy(int id, FileManagement fileManagement) throws MyException {
@@ -50,16 +52,17 @@ public class Neighborhood {
         throw new MyException(MyException.HOUSE_NOT_FOUND);
     }
 
-    public void listHousesNeighborhood(String data, FileManagement fileManagement) {
+    public void listHousesNeighborhood(String data, FileManagement fileManagement, Neighborhood neighborhood) {
         fileManagement.saveData("< OK: Listing houses in the neighborhood >");
 
         houses.stream().forEach(house -> {
 
             if (house.getPeople().size() == 0) {
-                fileManagement.saveData("<House with id: " + house.getId()
+                fileManagement.saveData("< Neighborhood " + neighborhood.getName() + " >");
+                fileManagement.saveData("   <House with id: " + house.getId()
                         + " has " + house.getPeople().size() + " tenants >");
             } else {
-                fileManagement.saveData("<House with id: " + house.getId()
+                fileManagement.saveData("   <House with id: " + house.getId()
                         + " has " + house.getPeople().size() + " tenants>");
                 if (data.equalsIgnoreCase("s")) house.accomodationList(fileManagement);
             }

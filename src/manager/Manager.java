@@ -78,7 +78,7 @@ public class Manager implements Runnable {
             case "C":
                 if (data.length != 5) throw new Exceptions(Exceptions.NUMBER_PARAMETERS_INCORRECT);
                 neighborhood = checkNeighborhood(data[1].toUpperCase());
-                neighborhood.build(data);
+                neighborhood.build(data, fileManagement);
                 break;
             case "E":
                 if (data.length != 3) throw new Exceptions(Exceptions.NUMBER_PARAMETERS_INCORRECT);
@@ -101,7 +101,7 @@ public class Manager implements Runnable {
             case "L":
                 if (data.length != 2) throw new Exceptions(Exceptions.NUMBER_PARAMETERS_INCORRECT);
                 neighborhood = checkNeighborhood(data[1].toUpperCase());
-                neighborhood.listHousesNeighborhood("l", fileManagement);
+                neighborhood.listHousesNeighborhood(data[0], fileManagement, neighborhood);
                 break;
             case "V":
                 if (data.length != 3) throw new Exceptions(Exceptions.NUMBER_PARAMETERS_INCORRECT);
@@ -143,7 +143,7 @@ public class Manager implements Runnable {
         System.out.println("OK: List all");
         neighborhoods.stream().forEach(neighborhood1 -> {
             System.out.print("<Neighborhood " + neighborhood1.getName() + " >");
-            neighborhood.listHousesNeighborhood("s", fileManagement);
+            neighborhood.listHousesNeighborhood("s", fileManagement, neighborhood1);
         });
     }
 
