@@ -28,5 +28,4 @@ public class Vistaalegre extends Neighborhood {
     public boolean checkSize(int size) {
         return size == this.couple;
     }
-
 }

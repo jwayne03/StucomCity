@@ -27,5 +27,4 @@ public class Villaconcha extends Neighborhood {
     public boolean checkSize(int size) {
         return true;
     }
-
 }

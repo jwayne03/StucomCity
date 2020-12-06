@@ -30,7 +30,7 @@ public class Neighborhood {
         if (!checkHouseRent(rent)) throw new MyException(MyException.INCORRECT_RENT_PRICE);
         if (!checkSize(houseSize)) throw new MyException(MyException.INCORRECT_NUMBER_OF_PERSON);
 
-        this.houses.add(new House(houseId, houseSize, rent));
+        houses.add(new House(houseId, houseSize, rent));
 
         fileManagement.saveData("< OK: House created in the neighborhood >");
     }
@@ -51,24 +51,16 @@ public class Neighborhood {
         throw new MyException(MyException.HOUSE_NOT_FOUND);
     }
 
-    public void listHousesNeighborhood(String data, FileManagement fileManagement, Neighborhood neighborhood) {
-        fileManagement.saveData("< OK: Listing houses in the neighborhood >");
-
-        houses.forEach(house -> {
-
-            if (house.getPeople().size() == 0) {
-                fileManagement.saveData("< Neighborhood " + neighborhood.getName() + " >");
-                fileManagement.saveData("   <House with id: " + house.getId()
+    public void listHousesNeighborhood(String data, FileManagement fileManagement) {
+        if (data.equalsIgnoreCase("l")) {
+            fileManagement.saveData("< OK: Listing houses in the neighborhood >");
+            houses.forEach(house -> {
+                fileManagement.saveData("       <House with id: " + house.getId()
                         + " has " + house.getPeople().size() + " tenants >");
-            } else {
-                fileManagement.saveData("   <House with id: " + house.getId()
-                        + " has " + house.getPeople().size() + " tenants>");
-                if (data.equalsIgnoreCase("s")) house.accomodationList(fileManagement);
-            }
-            fileManagement.saveData("< There are no more houses in the neighborhood >");
-        });
 
-        fileManagement.saveData("< End of the neighborhood list >");
+            });
+        }
+        fileManagement.saveData("< There are no more houses in the neighborhood >");
     }
 
     public List<String> getType() {

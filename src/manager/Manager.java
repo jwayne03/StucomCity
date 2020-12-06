@@ -15,7 +15,6 @@ import persistence.FileManagement;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -30,6 +29,8 @@ public class Manager implements Runnable {
     private Neighborhood neighborhood;
     private List<Neighborhood> neighborhoods;
     private boolean exit;
+
+    private final String INPUT_FILE = "P1_ejemplo_entrada.txt";
 
     private Manager() {
         house = new House();
@@ -51,7 +52,7 @@ public class Manager implements Runnable {
 
     private void readFile() {
         try {
-            File file = new File("P1_ejemplo_entrada.txt");
+            File file = new File(INPUT_FILE);
             if (!file.exists()) fatalError();
             BufferedReader read = new BufferedReader(new FileReader(file));
             String line;
@@ -66,9 +67,7 @@ public class Manager implements Runnable {
                     fileManagement.saveData(e.getMessage());
                 }
             }
-        } catch (Exceptions | FileNotFoundException e) {
-            fileManagement.saveData(e.getMessage());
-        } catch (IOException e) {
+        } catch (Exceptions | IOException e) {
             fileManagement.saveData(e.getMessage());
         }
     }
@@ -101,7 +100,7 @@ public class Manager implements Runnable {
             case "L":
                 if (data.length != 2) throw new Exceptions(Exceptions.NUMBER_PARAMETERS_INCORRECT);
                 neighborhood = checkNeighborhood(data[1].toUpperCase());
-                neighborhood.listHousesNeighborhood(data[0], fileManagement, neighborhood);
+                neighborhood.listHousesNeighborhood(data[0], fileManagement);
                 break;
             case "V":
                 if (data.length != 3) throw new Exceptions(Exceptions.NUMBER_PARAMETERS_INCORRECT);
@@ -140,11 +139,24 @@ public class Manager implements Runnable {
     }
 
     private void stucomCityList() {
-        System.out.println("OK: List all");
-        neighborhoods.stream().forEach(neighborhood1 -> {
-            System.out.print("<Neighborhood " + neighborhood1.getName() + " >");
-            neighborhood.listHousesNeighborhood("s", fileManagement, neighborhood1);
+        fileManagement.saveData("< OK: List all neighborhoods >");
+        neighborhoods.forEach(neighborhood1 -> {
+            fileManagement.saveData("<Neighborhood " + neighborhood1.getName() + " >");
+            if (neighborhood1.getHouses().size() == 0) {
+                fileManagement.saveData("   < There are not houses >");
+            } else {
+                neighborhood1.getHouses().forEach(house -> {
+                    fileManagement.saveData("       <House with id: " + house.getId()
+                            + " has " + house.getPeople().size() + " tenants >");
+                    house.getPeople().forEach(person -> {
+                        fileManagement.saveData("       <Tenant with id: " + person.getId() + " is "
+                                + person.getType() + " and "
+                                + person.getProfession() + ">");
+                    });
+                });
+            }
         });
+        fileManagement.saveData("< End of neighborhood list >");
     }
 
     private void fatalError() throws Exceptions {

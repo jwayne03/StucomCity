@@ -18,43 +18,27 @@ public class Person {
     }
 
     public void checkProfession(Neighborhood neighborhood) throws MyException {
-        if (!isProfession()) throw new MyException(MyException.PROFESSION_NOT_ADMITTED_NEIGHBORHOOD);
-        if (neighborhood.getName().equalsIgnoreCase("ofidelia")) {
-            switch (this.type.toUpperCase()) {
-                case "RICO":
+        switch (this.type.toUpperCase()) {
+            case "RICO":
+                if (!this.profession.equalsIgnoreCase("pescador") ||
+                        this.profession.equalsIgnoreCase("contable"))
+                    throw new MyException(MyException.PROFESSION_NOT_ADMITTED_NEIGHBORHOOD);
+                break;
+            case "POBRE":
+                if (neighborhood.getName().equalsIgnoreCase("ofidelia")) {
                     if (!this.profession.equalsIgnoreCase("pescador") ||
                             this.profession.equalsIgnoreCase("contable"))
                         throw new MyException(MyException.PROFESSION_NOT_ADMITTED_NEIGHBORHOOD);
-                    break;
-                case "POBRE":
-                    if (neighborhood.getName().equalsIgnoreCase("ofidelia")) {
-                        if (!this.profession.equalsIgnoreCase("pescador") ||
-                                this.profession.equalsIgnoreCase("contable"))
-                            throw new MyException(MyException.PROFESSION_NOT_ADMITTED_NEIGHBORHOOD);
-                    } else {
-                        if (!this.profession.equalsIgnoreCase("pescador"))
-                            throw new MyException(MyException.PROFESSION_NOT_ADMITTED_NEIGHBORHOOD);
-                    }
-                    break;
-                case "TRANQUILO":
-                    if (this.profession.equalsIgnoreCase("directivo"))
+                } else {
+                    if (!this.profession.equalsIgnoreCase("pescador"))
                         throw new MyException(MyException.PROFESSION_NOT_ADMITTED_NEIGHBORHOOD);
-                    break;
-            }
+                }
+                break;
+            case "TRANQUILO":
+                if (this.profession.equalsIgnoreCase("directivo"))
+                    throw new MyException(MyException.PROFESSION_NOT_ADMITTED_NEIGHBORHOOD);
+                break;
         }
-    }
-
-    private boolean isProfession() {
-        List<String> stringList = new ArrayList<>();
-        stringList.add("CONTABLE");
-        stringList.add("EMPRESARIO");
-        stringList.add("DIRECTIVO");
-        stringList.add("PESCADOR");
-
-        for (String x : stringList) {
-            if (this.profession.equalsIgnoreCase(x)) return true;
-        }
-        return false;
     }
 
     public boolean isType(Neighborhood neighborhoodType) throws MyException {

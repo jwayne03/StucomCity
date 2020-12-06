@@ -31,5 +31,4 @@ public class Alameda extends Neighborhood {
     public List<String> getType() {
         return type;
     }
-
 }
