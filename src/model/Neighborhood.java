@@ -1,6 +1,5 @@
 package model;
 
-import exceptions.Exceptions;
 import exceptions.MyException;
 import persistence.FileManagement;
 
@@ -55,7 +54,7 @@ public class Neighborhood {
     public void listHousesNeighborhood(String data, FileManagement fileManagement, Neighborhood neighborhood) {
         fileManagement.saveData("< OK: Listing houses in the neighborhood >");
 
-        houses.stream().forEach(house -> {
+        houses.forEach(house -> {
 
             if (house.getPeople().size() == 0) {
                 fileManagement.saveData("< Neighborhood " + neighborhood.getName() + " >");
