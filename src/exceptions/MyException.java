@@ -6,7 +6,7 @@ import java.util.List;
 public class MyException extends Exception {
 
     public static final int WRONG_NEIGHBORHOOD = 0;
-    public static final int WRONG_TYPE_PERSON = 1;
+    public static final int INCORRECT_TENANT_PROFESSION = 1;
     public static final int INCORRECT_NUMBER_OF_PERSON = 2;
     public static final int INCORRECT_RENT_PRICE = 3;
     public static final int HOUSE_NOT_FOUND = 4;

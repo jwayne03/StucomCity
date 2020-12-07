@@ -2,7 +2,7 @@ package manager;
 
 import exceptions.Exceptions;
 import exceptions.MyException;
-import model.House;
+import model.house.House;
 import model.Neighborhood;
 import model.neighborhoods.Alameda;
 import model.neighborhoods.Barriobajo;
@@ -11,6 +11,7 @@ import model.neighborhoods.Ofidelia;
 import model.neighborhoods.Villaconcha;
 import model.neighborhoods.Villaconchaalta;
 import model.neighborhoods.Vistaalegre;
+import model.person.Person;
 import persistence.FileManagement;
 
 import java.io.BufferedReader;
@@ -88,7 +89,9 @@ public class Manager implements Runnable {
                 if (data.length != 6) throw new Exceptions(Exceptions.NUMBER_PARAMETERS_INCORRECT);
                 neighborhood = checkNeighborhood(data[1].toUpperCase());
                 house = neighborhood.checkIdHouse(Integer.parseInt(data[2]));
-                house.rent(data, neighborhood);
+                Person person = new Person(Integer.parseInt(data[5]),data[4],data[3]);
+                person = person.checkType(person);
+                house.rent(data, neighborhood, house, fileManagement);
                 break;
             case "D":
                 if (data.length != 4) throw new Exceptions(Exceptions.NUMBER_PARAMETERS_INCORRECT);
@@ -111,8 +114,8 @@ public class Manager implements Runnable {
                 stucomCityList();
                 break;
             case "X":
-                exit = true;
                 fileManagement.saveData("< End of Program >");
+                exit = true;
                 break;
             default:
                 throw new Exceptions(Exceptions.WRONG_OPTION);

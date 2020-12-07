@@ -1,6 +1,7 @@
 package model;
 
 import exceptions.MyException;
+import model.house.House;
 import persistence.FileManagement;
 
 import java.util.ArrayList;
@@ -20,6 +21,39 @@ public class Neighborhood {
         this.name = name;
         houses = new ArrayList<>();
         type = new ArrayList<>();
+    }
+
+
+    public List<String> getType() {
+        return type;
+    }
+
+    public void setType(List<String> type) {
+        this.type = type;
+    }
+
+    public boolean checkSize(int size) {
+        return false;
+    }
+
+    public boolean checkHouseRent(int rent) {
+        return false;
+    }
+
+    public List<House> getHouses() {
+        return houses;
+    }
+
+    public void setHouses(ArrayList<House> houses) {
+        this.houses = houses;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public void build(String[] data, FileManagement fileManagement) throws MyException {
@@ -61,37 +95,5 @@ public class Neighborhood {
             });
         }
         fileManagement.saveData("< There are no more houses in the neighborhood >");
-    }
-
-    public List<String> getType() {
-        return type;
-    }
-
-    public void setType(List<String> type) {
-        this.type = type;
-    }
-
-    public boolean checkSize(int size) {
-        return false;
-    }
-
-    public boolean checkHouseRent(int rent) {
-        return false;
-    }
-
-    public List<House> getHouses() {
-        return houses;
-    }
-
-    public void setHouses(ArrayList<House> houses) {
-        this.houses = houses;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 }

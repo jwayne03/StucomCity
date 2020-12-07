@@ -1,6 +1,8 @@
-package model;
+package model.house;
 
 import exceptions.MyException;
+import model.Neighborhood;
+import model.person.Person;
 import persistence.FileManagement;
 
 import java.util.ArrayList;
@@ -25,7 +27,24 @@ public class House {
         people = new ArrayList<>();
     }
 
-    public void rent(String[] data, Neighborhood neighborhood) throws MyException {
+    public List<Person> getPeople() {
+        return people;
+    }
+
+    public boolean isThisSize() {
+        return (this.capacity >= people.size());
+    }
+
+    public void setPeople(List<Person> people) {
+        this.people = people;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void rent(String[] data, Neighborhood neighborhood,
+                     House house, FileManagement fileManagement) throws MyException {
         String tenantType = data[3].toUpperCase();
         String tenantProfession = data[4].toUpperCase();
         int tenantId = Integer.parseInt(data[5]);
@@ -33,8 +52,8 @@ public class House {
         person = new Person(tenantId, tenantProfession, tenantType);
 
         if (!isThisSize()) throw new MyException(MyException.NO_MORE_TENANTS_FIT);
-        if (!person.isType(neighborhood)) throw new MyException(MyException.WRONG_TYPE_PERSON);
-        person.checkProfession(neighborhood);
+        if (!person.isType(neighborhood)) throw new MyException(MyException.INCORRECT_TENANT_PROFESSION);
+        person.checkProfession(neighborhood, house, fileManagement);
     }
 
     public boolean isEvicted(int id, FileManagement fileManagement) {
@@ -54,21 +73,5 @@ public class House {
                     + person.getProfession() + ">");
         }
         fileManagement.saveData("< There are no more tenants in the house >");
-    }
-
-    public List<Person> getPeople() {
-        return people;
-    }
-
-    private boolean isThisSize() {
-        return (this.capacity >= people.size());
-    }
-
-    public void setPeople(List<Person> people) {
-        this.people = people;
-    }
-
-    public int getId() {
-        return id;
     }
 }
