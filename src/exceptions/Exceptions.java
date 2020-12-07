@@ -12,7 +12,7 @@ public class Exceptions extends java.lang.Exception {
     private List<String> messege = Arrays.asList(
             "< Incorrect number of parameters >",
             "< READ ERROR >",
-            "< Wrong Option >"
+            "< Wrong option >"
     );
 
     private int value;

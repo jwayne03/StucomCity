@@ -15,7 +15,7 @@ public class Poor extends Person {
     public void checkProfession(Neighborhood neighborhood, House house,
                                 FileManagement fileManagement) throws MyException {
         if (!getProfession().equalsIgnoreCase("CONTABLE")
-                && !getProfession().equalsIgnoreCase("PESCADOR")) {
+                && getProfession().equalsIgnoreCase("PESCADOR")) {
             throw new MyException(MyException.INCORRECT_TENANT_PROFESSION);
         }
 

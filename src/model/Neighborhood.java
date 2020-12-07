@@ -89,7 +89,7 @@ public class Neighborhood {
         if (data.equalsIgnoreCase("l")) {
             fileManagement.saveData("< OK: Listing houses in the neighborhood >");
             houses.forEach(house -> {
-                fileManagement.saveData("       <House with id: " + house.getId()
+                fileManagement.saveData("< House with id: " + house.getId()
                         + " has " + house.getPeople().size() + " tenants >");
 
             });
