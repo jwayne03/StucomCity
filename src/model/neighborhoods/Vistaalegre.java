@@ -8,15 +8,14 @@ import java.util.List;
 public class Vistaalegre extends Neighborhood {
 
     private int couple;
-    private List<String> type;
 
     public Vistaalegre(String name) {
         super(name);
         this.couple = 2;
         this.type = new ArrayList<>();
-        type.add("TRANQUILO");
-        type.add("RICO");
-        type.add("POBRE");
+        super.type.add("TRANQUILO");
+        super.type.add("RICO");
+        super.type.add("POBRE");
     }
 
     @Override

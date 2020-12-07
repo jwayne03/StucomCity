@@ -8,15 +8,14 @@ import java.util.List;
 public class Villaconchaalta extends Neighborhood {
 
     private int minRent;
-    private List<String> type;
 
     public Villaconchaalta(String name) {
         super(name);
         this.minRent = 500;
         this.type = new ArrayList<>();
-        type.add("POBRE");
-        type.add("RICO");
-        type.add("POBRE");
+        super.type.add("POBRE");
+        super.type.add("RICO");
+        super.type.add("POBRE");
     }
 
     @Override

@@ -8,13 +8,12 @@ import java.util.List;
 public class Nolomires extends Neighborhood {
 
     private int minLargeFamilies;
-    private List<String> type;
 
     public Nolomires(String name) {
         super(name);
         this.minLargeFamilies = 5;
         this.type = new ArrayList<>();
-        type.add("POBRE");
+        super.type.add("POBRE");
     }
 
     @Override

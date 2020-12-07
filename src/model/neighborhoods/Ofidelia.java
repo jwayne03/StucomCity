@@ -7,13 +7,11 @@ import java.util.List;
 
 public class Ofidelia extends Neighborhood {
 
-    private List<String> type;
-
     public Ofidelia(String name) {
         super(name);
         this.type = new ArrayList<>();
-        type.add("POBRE");
-        type.add("TRANQUILO");
+        super.type.add("POBRE");
+        super.type.add("TRANQUILO");
     }
 
     @Override

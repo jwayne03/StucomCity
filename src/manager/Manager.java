@@ -2,7 +2,7 @@ package manager;
 
 import exceptions.Exceptions;
 import exceptions.MyException;
-import model.House;
+import model.house.House;
 import model.Neighborhood;
 import model.neighborhoods.Alameda;
 import model.neighborhoods.Barriobajo;
@@ -88,7 +88,7 @@ public class Manager implements Runnable {
                 if (data.length != 6) throw new Exceptions(Exceptions.NUMBER_PARAMETERS_INCORRECT);
                 neighborhood = checkNeighborhood(data[1].toUpperCase());
                 house = neighborhood.checkIdHouse(Integer.parseInt(data[2]));
-                house.rent(data, neighborhood);
+                house.rent(data, neighborhood, house, fileManagement);
                 break;
             case "D":
                 if (data.length != 4) throw new Exceptions(Exceptions.NUMBER_PARAMETERS_INCORRECT);
@@ -104,15 +104,15 @@ public class Manager implements Runnable {
                 break;
             case "V":
                 if (data.length != 3) throw new Exceptions(Exceptions.NUMBER_PARAMETERS_INCORRECT);
-                house.accomodationList(fileManagement);
+                house.accommodationList(fileManagement);
                 break;
             case "S":
                 if (data.length != 1) throw new Exceptions(Exceptions.NUMBER_PARAMETERS_INCORRECT);
                 stucomCityList();
                 break;
             case "X":
-                exit = true;
                 fileManagement.saveData("< End of Program >");
+                exit = true;
                 break;
             default:
                 throw new Exceptions(Exceptions.WRONG_OPTION);
@@ -139,24 +139,24 @@ public class Manager implements Runnable {
     }
 
     private void stucomCityList() {
-        fileManagement.saveData("< OK: List all neighborhoods >");
+        fileManagement.saveData("< OK: Listing Neighborhoods >");
         neighborhoods.forEach(neighborhood1 -> {
-            fileManagement.saveData("<Neighborhood " + neighborhood1.getName() + " >");
+            fileManagement.saveData("< Neighborhood " + neighborhood1.getName() + " >");
             if (neighborhood1.getHouses().size() == 0) {
                 fileManagement.saveData("   < There are not houses >");
             } else {
                 neighborhood1.getHouses().forEach(house -> {
-                    fileManagement.saveData("       <House with id: " + house.getId()
+                    fileManagement.saveData("       < House with id: " + house.getId()
                             + " has " + house.getPeople().size() + " tenants >");
                     house.getPeople().forEach(person -> {
-                        fileManagement.saveData("       <Tenant with id: " + person.getId() + " is "
+                        fileManagement.saveData("       < Tenant with id: " + person.getId() + " is "
                                 + person.getType() + " and "
                                 + person.getProfession() + ">");
                     });
                 });
             }
         });
-        fileManagement.saveData("< End of neighborhood list >");
+        fileManagement.saveData("< End of the neighborhood list >");
     }
 
     private void fatalError() throws Exceptions {
