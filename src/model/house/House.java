@@ -2,7 +2,10 @@ package model.house;
 
 import exceptions.MyException;
 import model.Neighborhood;
+import model.person.Chill;
 import model.person.Person;
+import model.person.Poor;
+import model.person.Rich;
 import persistence.FileManagement;
 
 import java.util.ArrayList;
@@ -49,13 +52,32 @@ public class House {
         String tenantProfession = data[4].toUpperCase();
         int tenantId = Integer.parseInt(data[5]);
 
-        person = new Person(tenantId, tenantProfession, tenantType);
+        //person = new Person(tenantId, tenantProfession, tenantType);
+
 
         if (!isThisSize()) throw new MyException(MyException.NO_MORE_TENANTS_FIT);
+        person = checkType(person, tenantType, tenantId, tenantProfession, tenantType);
         if (!person.isType(neighborhood)) throw new MyException(MyException.PERSON_NOT_ADMITTED_IN_NEIGHBORHOOD);
-        person.checkType(person);
         person.checkProfession(neighborhood, house, fileManagement);
         this.people.add(person);
+    }
+
+    public Person checkType(Person person, String type,int tenantId,String tenantProfession, String tenantType) throws MyException {
+        Person person1;
+        switch (type.toUpperCase()) {
+            case "TRANQUILO":
+                person1 = new Chill(tenantId, tenantProfession, tenantType);
+                break;
+            case "POBRE":
+                person1 = new Poor(tenantId, tenantProfession, tenantType);
+                break;
+            case "RICO":
+                person1 = new Rich(tenantId, tenantProfession, tenantType);
+                break;
+            default:
+                throw new MyException(MyException.INCORRECT_TENANT_PROFESSION);
+        }
+        return person1;
     }
 
     public boolean isEvicted(int id, FileManagement fileManagement) throws MyException {

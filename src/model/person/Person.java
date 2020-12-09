@@ -65,21 +65,5 @@ public class Person {
         } else throw new MyException(MyException.NO_MORE_TENANTS_FIT);
     }
 
-    public Person checkType(Person person) throws MyException {
-        Person person1;
-        switch (this.type.toUpperCase()) {
-            case "TRANQUILO":
-                person1 = new Chill(person.getId(), person.getType(), person.getProfession());
-                break;
-            case "POBRE":
-                person1 = new Poor(person.getId(), person.getType(), person.getProfession());
-                break;
-            case "RICO":
-                person1 = new Rich(person.getId(), person.getType(), person.getProfession());
-                break;
-            default:
-                throw new MyException(MyException.INCORRECT_TENANT_PROFESSION);
-        }
-        return person1;
-    }
+
 }
