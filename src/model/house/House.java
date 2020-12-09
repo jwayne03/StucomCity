@@ -54,7 +54,6 @@ public class House {
 
         //person = new Person(tenantId, tenantProfession, tenantType);
 
-
         if (!isThisSize()) throw new MyException(MyException.NO_MORE_TENANTS_FIT);
         person = checkType(person, tenantType, tenantId, tenantProfession, tenantType);
         if (!person.isType(neighborhood)) throw new MyException(MyException.PERSON_NOT_ADMITTED_IN_NEIGHBORHOOD);
@@ -62,7 +61,8 @@ public class House {
         this.people.add(person);
     }
 
-    public Person checkType(Person person, String type,int tenantId,String tenantProfession, String tenantType) throws MyException {
+    public Person checkType(Person person, String type,int tenantId,
+                            String tenantProfession, String tenantType) throws MyException {
         Person person1;
         switch (type.toUpperCase()) {
             case "TRANQUILO":
@@ -95,8 +95,8 @@ public class House {
         fileManagement.saveData("\n< OK: Listing tenants of the House >");
 
         for (Person person : people) {
-            fileManagement.saveData("<Tenant with id: " + person.getId() + " is " + person.getType() + " and "
-                    + person.getProfession() + ">");
+            fileManagement.saveData("< Tenant with id: " + person.getId() + " is " + person.getType() + " and "
+                    + person.getProfession() + " >");
         }
         fileManagement.saveData("< There are no more tenants in the house >");
     }

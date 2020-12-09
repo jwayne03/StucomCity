@@ -5,7 +5,7 @@ import model.Neighborhood;
 import model.house.House;
 import persistence.FileManagement;
 
-public class Chill extends Person{
+public class Chill extends Person {
 
     public Chill(int id, String profession, String type) {
         super(id, profession, type);
