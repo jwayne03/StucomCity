@@ -53,6 +53,7 @@ public class House {
 
         if (!isThisSize()) throw new MyException(MyException.NO_MORE_TENANTS_FIT);
         if (!person.isType(neighborhood)) throw new MyException(MyException.PERSON_NOT_ADMITTED_IN_NEIGHBORHOOD);
+        person.checkType(person);
         person.checkProfession(neighborhood, house, fileManagement);
         this.people.add(person);
     }
