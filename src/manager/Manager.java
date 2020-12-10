@@ -61,8 +61,6 @@ public class Manager implements Runnable {
             while ((line = read.readLine()) != null && (!exit)) {
                 try {
                     String[] data = line.split(" ");
-//                    fileManagement.saveData(line);
-                    System.out.println(Arrays.toString(data));
                     dataManager(data);
                 } catch (Exceptions | MyException e) {
                     fileManagement.saveData(e.getMessage());

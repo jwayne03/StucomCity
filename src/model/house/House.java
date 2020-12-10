@@ -52,8 +52,6 @@ public class House {
         String tenantProfession = data[4].toUpperCase();
         int tenantId = Integer.parseInt(data[5]);
 
-        //person = new Person(tenantId, tenantProfession, tenantType);
-
         if (!isThisSize()) throw new MyException(MyException.NO_MORE_TENANTS_FIT);
         person = checkType(person, tenantType, tenantId, tenantProfession, tenantType);
         if (!person.isType(neighborhood)) throw new MyException(MyException.PERSON_NOT_ADMITTED_IN_NEIGHBORHOOD);
