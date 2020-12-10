@@ -49,7 +49,7 @@ public class Person {
         this.type = type;
     }
 
-    public boolean isType(Neighborhood neighborhoodType)  {
+    public boolean isType(Neighborhood neighborhoodType) {
         for (String i : neighborhoodType.getType()) {
             if (type.equalsIgnoreCase(i)) {
                 return true;
