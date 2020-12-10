@@ -61,6 +61,7 @@ public class Manager implements Runnable {
             while ((line = read.readLine()) != null && (!exit)) {
                 try {
                     String[] data = line.split(" ");
+//                    fileManagement.saveData(line);
                     System.out.println(Arrays.toString(data));
                     dataManager(data);
                 } catch (Exceptions | MyException e) {
@@ -151,7 +152,7 @@ public class Manager implements Runnable {
                     house.getPeople().forEach(person -> {
                         fileManagement.saveData("       < Tenant with id: " + person.getId() + " is "
                                 + person.getType() + " and "
-                                + person.getProfession() + ">");
+                                + person.getProfession() + " >");
                     });
                 });
             }

@@ -14,8 +14,7 @@ public class Rich extends Person {
     @Override
     public void checkProfession(Neighborhood neighborhood, House house,
                                 FileManagement fileManagement) throws MyException {
-        if (!getProfession().equalsIgnoreCase("pescador") ||
-                !getProfession().equalsIgnoreCase("contable")) {
+        if (getProfession().equalsIgnoreCase("pescador")) {
             throw new MyException(MyException.INCORRECT_TENANT_PROFESSION);
         }
         super.checkProfession(neighborhood, house, fileManagement);

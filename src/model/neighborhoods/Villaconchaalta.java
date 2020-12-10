@@ -20,7 +20,7 @@ public class Villaconchaalta extends Neighborhood {
 
     @Override
     public boolean checkHouseRent(int rent) {
-        return rent > this.minRent;
+        return rent >= this.minRent;
     }
 
     @Override

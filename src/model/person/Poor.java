@@ -19,11 +19,11 @@ public class Poor extends Person {
             throw new MyException(MyException.INCORRECT_TENANT_PROFESSION);
         }
 
-        if (!getProfession().equalsIgnoreCase("CONTABLE")) {
-            if (!neighborhood.getName().equalsIgnoreCase("OFIDELIA")) {
-                throw new MyException(MyException.INCORRECT_TENANT_PROFESSION);
-            }
+        if (getProfession().equalsIgnoreCase("CONTABLE") &&
+                !neighborhood.getName().equalsIgnoreCase("OFIDELIA")) {
+            throw new MyException(MyException.INCORRECT_TENANT_PROFESSION);
         }
+
         super.checkProfession(neighborhood, house, fileManagement);
     }
 }

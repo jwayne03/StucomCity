@@ -95,8 +95,8 @@ public class House {
         fileManagement.saveData("\n< OK: Listing tenants of the House >");
 
         for (Person person : people) {
-            fileManagement.saveData("<Tenant with id: " + person.getId() + " is " + person.getType() + " and "
-                    + person.getProfession() + ">");
+            fileManagement.saveData("< Tenant with id: " + person.getId() + " is " + person.getType() + " and "
+                    + person.getProfession() + " >");
         }
         fileManagement.saveData("< There are no more tenants in the house >");
     }
